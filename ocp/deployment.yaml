@@ -1,0 +1,20 @@
+# ocp/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gin-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gin-api
+  template:
+    metadata:
+      labels:
+        app: gin-api
+    spec:
+      containers:
+        - name: gin-api
+          image: <will be filled in later>
+          ports:
+            - containerPort: 8080
