@@ -5,7 +5,7 @@ metadata:
 spec:
   params:
     - name: revision
-    - name: repo-url
+    - name: url
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -17,8 +17,8 @@ spec:
         params:
           - name: revision
             value: $(params.revision)
-          - name: repo-url
-            value: $(params.repo-url)
+          - name: url
+            value: $(params.url)
           - name: image-url
             value: image-registry.openshift-image-registry.svc:5000/vveeraso-dev/gin-api:latest
         workspaces:

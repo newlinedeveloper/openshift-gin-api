@@ -6,5 +6,5 @@ spec:
   params:
     - name: revision
       value: $(body.head_commit.id)
-    - name: repo-url
+    - name: url
       value: $(body.repository.clone_url)

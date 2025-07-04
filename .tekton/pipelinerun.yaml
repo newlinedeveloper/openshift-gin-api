@@ -6,7 +6,7 @@ spec:
   pipelineRef:
     name: gin-api-pipeline
   params:
-    - name: repo-url
+    - name: url
       value: https://github.com/newlinedeveloper/openshift-gin-api.git
     - name: revision
       value: main
