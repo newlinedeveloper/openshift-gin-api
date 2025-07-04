@@ -1,0 +1,33 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: gin-api-template
+spec:
+  params:
+    - name: gitrevision
+    - name: gitrepositoryurl
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: gin-api-run-
+      spec:
+        pipelineRef:
+          name: gin-api-pipeline
+        params:
+          - name: revision
+            value: $(params.gitrevision)
+          - name: repo-url
+            value: $(params.gitrepositoryurl)
+          - name: image-url
+            value: image-registry.openshift-image-registry.svc:5000/vveeraso-dev/gin-api:latest
+        workspaces:
+          - name: shared-workspace
+            volumeClaimTemplate:
+              metadata:
+                name: source-pvc
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 1Gi

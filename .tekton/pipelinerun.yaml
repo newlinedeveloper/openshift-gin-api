@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: gin-api-pipelinerun
+spec:
+  pipelineRef:
+    name: gin-api-pipeline
+  params:
+    - name: repo-url
+      value: https://github.com/newlinedeveloper/openshift-gin-api.git
+    - name: revision
+      value: main
+    - name: image-url
+      value: image-registry.openshift-image-registry.svc:5000/vveeraso-dev/gin-api:latest
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        metadata:
+          name: gin-api-pvc
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi

@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: gin-api
+spec:
+  to:
+    kind: Service
+    name: gin-api
+  port:
+    targetPort: 8080

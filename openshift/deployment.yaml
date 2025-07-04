@@ -1,4 +1,3 @@
-# ocp/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,6 +14,6 @@ spec:
     spec:
       containers:
         - name: gin-api
-          image: <will be filled in later>
+          image: image-registry.openshift-image-registry.svc:5000/vveeraso-dev/gin-api:latest
           ports:
             - containerPort: 8080

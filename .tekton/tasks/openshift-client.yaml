@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: openshift-client
+spec:
+  description: >-
+    Runs oc commands using OpenShift CLI.
+  params:
+    - name: SCRIPT
+      type: string
+      description: The oc script to run
+  steps:
+    - name: oc
+      image: registry.redhat.io/openshift4/ose-cli:latest
+      script: |
+        #!/bin/bash
+        $(params.SCRIPT)
