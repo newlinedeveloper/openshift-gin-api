@@ -4,8 +4,8 @@ metadata:
   name: gin-api-template
 spec:
   params:
-    - name: gitrevision
-    - name: gitrepositoryurl
+    - name: revision
+    - name: repo-url
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -16,9 +16,9 @@ spec:
           name: gin-api-pipeline
         params:
           - name: revision
-            value: $(params.gitrevision)
+            value: $(params.revision)
           - name: repo-url
-            value: $(params.gitrepositoryurl)
+            value: $(params.repo-url)
           - name: image-url
             value: image-registry.openshift-image-registry.svc:5000/vveeraso-dev/gin-api:latest
         workspaces:

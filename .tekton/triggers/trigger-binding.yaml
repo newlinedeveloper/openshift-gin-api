@@ -4,7 +4,7 @@ metadata:
   name: github-binding
 spec:
   params:
-    - name: gitrevision
+    - name: revision
       value: $(body.head_commit.id)
-    - name: gitrepositoryurl
+    - name: repo-url
       value: $(body.repository.clone_url)
